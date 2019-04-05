@@ -56,7 +56,9 @@ create table usuario(
     telefono tinyint(9) null,
     direccion varchar(150) null,
     correo_electronico varchar(60) null,
-    token int(11)  null,
+    contrasena varchar(20) not null,
+    token varchar(11)  null,
+
     id_tipo_usuario int(3) not null,
     id_carrera tinyint(3) not null,
     constraint fk_id_tipo_usuario foreign key(id_tipo_usuario)
