@@ -19,6 +19,21 @@
 			$result = $this->connect->query($query); //guardamos el resultado en una variable y hacemos la conexion con la base de datos $this->connect y hacemos la consulta query->($query)
 			return $result;//devolvemos el resultado
 		}
+    public function getData2($query)//recibe variable nombrada sql anteriormente y la procesa
+    {	
+        self::setNames();	
+        $result = $this->connect->query($query);
+        if  ($result == false)
+        {
+            return false;
+        }
+        $rows = array();
+        while ($row = $result->fetch_assoc())
+        {
+            $rows[] = $row;
+        }
+        return $rows;
+    }
 
 		public function execute($query) // recibe la orden sql y la ejecuta en la base de datos(update)
 		{
