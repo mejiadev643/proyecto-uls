@@ -1,26 +1,27 @@
 <?php 
-	session_start();  
-	if ($_SESSION["tipo"]==1)
-	{
-		header("location:../user/Panel_user.php");
-	}
-	elseif ($_SESSION["tipo"]==2)
-	{
-		header("location:../operator/Panel_operator.php");
+  session_start();  
+  if ($_SESSION["tipo"]==3)
+  {
+    header("location:../admin/Panel_admin.php");
+  }
+  elseif ($_SESSION["tipo"]==1)
+  {
+    
+  }
+  elseif ($_SESSION["tipo"]==2)
+  {
+    header("location:../operator/Panel_operator.php");
 
-	}
-	elseif ($_SESSION["tipo"]==3)
-	{
-		
+  }
+  else
+  {
+    header("location:../../index.php");
 
-	}
-	else
-	{
-		header("location:../../index.php");
-
-	}
+  }
 ?>
-<?php 
+
+<?php
+   
   include_once("../../model/procesos_login.php");
 ?>
 <!DOCTYPE html>
@@ -29,17 +30,16 @@
     	<!-- Required meta tags -->
     	<meta charset="utf-8">
     	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Inicio</title>
+		<title>Ofertas de Empleo</title>
     	<!-- Bootstrap CSS -->
 		<link href="../../public/css/bootstrap.min.css" rel="stylesheet">
-		<link rel="stylesheet" type="text/css" href="none.css">
   		</head>
 
   	<body>
   		<!--<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">-->
 
 		<nav class="navbar  navbar-expand-lg navbar-dark bg-dark">
-  			<a class="navbar-brand" href="Panel_admin.php">ULS</a>
+  			<a class="navbar-brand" href="Panel_user.php">ULS</a>
   			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="	#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     		<span class="navbar-toggler-icon"></span>
   		</button>
@@ -47,9 +47,19 @@
   		<div class="collapse navbar-collapse" id="navbarSupportedContent">
     		<ul class="navbar-nav mr-auto">
       			<li class="nav-item active">
-        			<a class="nav-link" href="Panel_admin.php">Inicio <span class="sr-only">(current)</span></a>
+        			<a class="nav-link" href="Panel_user.php">Inicio <span class="sr-only">(current)</span></a>
       			</li>
-
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Perfil
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="perfil.php?edit=actualizar&id=<?php echo $_SESSION['id']; ?>">Ver perfil</a>
+                  <a class="dropdown-item" href="perfil.php?edit=actualizar">Editar perfil</a>
+                  
+              </div><!--Eliminar esta parte de l avista de moderador e incluirlo en la vista de cliente y egresado-->
+            </li>
+				
 
       			<li class="nav-item">
         			<a class="nav-link" href="empleo.php">Ofertas de Empleo</a>
@@ -59,56 +69,28 @@
         			<a class="nav-link" href="academica.php">Ofertas Academicas</a>
       			</li>
 
-      			<li class="nav-item">
-        			<a class="nav-link" href="egresado.php">Egresados</a>
-      			</li>
-      			<li class="nav-item">
-        			<a class="nav-link" href="moderador.php">moderadores</a>
-      			</li>
+      			
 
 				<li class="nav-item">
         			<a class="nav-link" href="../../model/cerrar_sesion.php">Cerrar sesión</a>
       			</li>	
     		</ul>
-
+    		
   		</div>
 		</nav>
-    <!--Agregar la barra de empleo y un boton de buscar, y no de editar-->
-    <div class="container">
+		<div class="container">
+      
       <?php
-      if (isset($_GET['action'])) {//seleccion del titulo atravez de get
-            echo "<h2 style='text-align: center;''>
-            Editar oferta de empleo
-            </h2>";
-            
-
-        
-      }elseif (isset($_GET['nuevo'])) {//editar ofertas academicas
-        echo "<h2 style='text-align: center;''>
-        Crear oferta de empleo
-        </h2>";
-      }
-      ?>
-      <hr>
-      <?php //formularios
-      if (isset($_GET["action"])) {//editar la publicacion "creada"
-        //echo "crear";// crear un formulario en base a ../publicar.php para editar
-        
-        include_once("../../controller/updatepublicacion.php");
-        require("../editpublicacion.php");
-        echo "</div><!--end container-->";
-      }elseif (isset($_GET['nuevo'])) {//nota esto solo es para apartar ep espacio nomas, aqui ira el formulario para editar, 
-        require("../publicar.php");
-        echo "</div><!--end container-->";
-    
-      }elseif (isset($_GET['ver'])) {//este es para ver el post
+      if (isset($_GET['ver'])) {//este es para ver el post
         include_once("../../controller/verpublicacion.php");
         include_once("../verpublicacion.php");
         echo "</div><!--end container-->";
       }else{//aqui ira las publicaciones
         echo "</div><!--end container-->";
         $consulta= new Login();
-        $sql="SELECT imagen, titulo, descripcion, id_publicacion,tipo_publicacion FROM publicacion WHERE tipo_publicacion=1 ORDER BY id_publicacion DESC LIMIT 30";
+        $carrera= $_SESSION['carrera'];//nueva linea, para mostrar la carrera correspondiente
+        //echo $_SESSION['carrera'];
+        $sql="SELECT imagen, titulo, descripcion, id_publicacion,tipo_publicacion FROM publicacion WHERE carrera_public='$carrera' AND tipo_publicacion=1 ORDER BY id_publicacion DESC LIMIT 30";
         $result = $consulta->getData($sql);
         if ($result->num_rows>0) {
           $publicacion=$consulta->getData2($sql);
@@ -139,13 +121,6 @@
                     }
                     ?>
                 </p>
-                <?php if ($_SESSION['tipo'] !='1') {?>
-                <a href="empleo.php?id=<?php echo $publicacion[$i]["id_publicacion"]; ?>&action=edit" class="btn btn-warning" style="position:absolute;bottom:5px;left:10px;">Editar</a>
-                <a href="../../controller/publicacion.php?delete=<?php echo $publicacion[$i]["id_publicacion"]; ?>&del=<?php echo $publicacion[$i]["tipo_publicacion"]; ?>&img=<?php echo $ruta;?>" class="btn btn-danger" style="position:absolute;bottom:5px;left: 30%;" onClick="return confirm('¿Desea continuar para eliminar la publicacion? \n Recuerde que una vez eliminado no volvera a recuperarlo')">Eliminar</a>
-
-                <?php
-                
-                } ?>
                 
 
                 <a href="empleo.php?ver=<?php echo $publicacion[$i]["id_publicacion"]; ?>" class="btn btn-primary" style="position:absolute;bottom:5px;right:10px;">Ver mas>>></a>
@@ -166,18 +141,13 @@
         
 
         <?php
-        }?>
+        }
+        ?>
         
   
-        <?php
-      ?>
-      
-      
-    
+        
 
-
-      <script src="../../public/js/jquery-1.12.4-jquery.min.js"></script>
-      <script src="../../public/js/bootstrap.min.js"></script>
-      
-    </body>
+		<script src="../../public/js/jquery-1.12.4-jquery.min.js"></script>
+	    <script src="../../public/js/bootstrap.min.js"></script>
+	</body>
 </html>

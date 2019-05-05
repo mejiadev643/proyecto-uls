@@ -61,16 +61,7 @@
       			<li class="nav-item active">
         			<a class="nav-link" href="Panel_admin.php">Inicio <span class="sr-only">(current)</span></a>
       			</li>
-				<li class="nav-item dropdown">
-        			<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    	      			Perfil
-        			</a>
-        			<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        				<a class="dropdown-item" href="#">Ver perfil</a>
-        		  		<a class="dropdown-item" href="#">Editar perfil</a>
-        		  		<a class="dropdown-item" href="#">Something else here</a>
-        			</div><!--Eliminar esta parte de l avista de moderador e incluirlo en la vista de cliente y egresado-->
-      			</li>
+
 
       			<li class="nav-item">
         			<a class="nav-link" href="empleo.php">Ofertas de Empleo</a>
@@ -91,10 +82,6 @@
         			<a class="nav-link" href="../../model/cerrar_sesion.php">Cerrar sesión</a>
       			</li>	
     		</ul>
-    		<form class="form-inline my-2 my-lg-0">
-      			<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    		</form>
   		</div>
 		</nav><!--inicio de tablas e interacciones-->
     <?php 
@@ -208,6 +195,7 @@
           }//end else
           
           ?>
+        </table>
 
 
       </div><!--end col-->

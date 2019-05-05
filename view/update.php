@@ -19,14 +19,22 @@
 				<div class="col-xs-12 col-md-8 col-xl-6	">
 					<form class="bg-dark" style="color: white; padding: 6px;" action="../../controller/update.php" enctype="multipart/form-data" method="post">
   						<div class="form-group ">
-    						<label for="formGroupExampleInput">Carnet</label>
-    						<input type="text" class="form-control" id="carnet" name="carnet" placeholder="<?php echo $carnet;?>" value="<?php echo $carnet;?>">
+                <?php if ($_SESSION['tipo']!=1) {?>
+                  <label for="formGroupExampleInput">Carnet</label>
+                <input type="text" class="form-control" id="carnet" name="carnet" placeholder="<?php echo $carnet;?>" value="<?php echo $carnet;?>">
+               <?php 
+               }else{?>
+                <input hidden type="text" class="form-control" id="carnet" name="carnet" placeholder="<?php echo $carnet;?>" value="<?php echo $carnet;?>">
+                  
+                <?php
+              } ?>
+    						
   					    </div>
   					   <div class="row">
   							<div class="col">
     							<label for="formGroupExampleInput">Nombre</label>
 
-      							<input type="text" class="form-control" id="nombre" name="nombre" placeholder="<?php echo $Nombre;?>" value="<?php echo $nombre;?>">
+      							<input type="text" class="form-control" id="nombre" name="nombre" placeholder="<?php echo $nombre;?>" value="<?php echo $nombre;?>">
     						</div>
     						<div class="col">
     							<label for="formGroupExampleInput">Apellido</label>
@@ -60,7 +68,7 @@
     					<div style=" margin-top: 15px; margin-left: 30px;">
                        		<img src="../../public/img/foto_user/<?php echo $foto; ?>" class="img-fluid" style="width: 100px; height: 100px"  alt="FOTO_USER">
                        					
-                     	</div><br>
+              </div><br>
   					    
   					    <div class="form-group"><!-- echo de la imagen que se ha guardado-->
   					    	<input hidden id="imagen1" name="imagen1"  type="text" value="<?php echo $foto; ?>" />

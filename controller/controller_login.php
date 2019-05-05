@@ -32,6 +32,8 @@
 					$usuario = $res['carnet'];
 					$clave = $res['contrasena'];
 					$tipo = $res['id_tipo_usuario'];
+					$carrera= $res['id_carrera'];//nueva linea
+					$id=$res['id'];
 				}
 				/*consulta nuevamente para comprovar que es un usuario valido (yo lo considero innecesario)*/
 				$query = $p_login->getData("SELECT * FROM usuario WHERE carnet = '$usuario' AND contrasena= '$clave' AND id_tipo_usuario= '$tipo'");
@@ -40,6 +42,8 @@
 					{
 					  	$_SESSION['usuario'] = $_POST['usuario'];
 					  	$_SESSION['tipo'] =  $tipo;
+					  	$_SESSION['carrera']= $carrera;//nueva linea
+					  	$_SESSION['id']= $id;
 					}
 				if ($tipo==1) {
 					header("location:../view/user/Panel_user.php");

@@ -11,32 +11,47 @@
 		$correo = $_POST['correo'];
 		$contrasena = $_POST['contrasena'];
 		$tipousuario = $_POST['tipousuario'];
+		$imagen=$_FILES['imagen'];
+		if ($imagen['size']<=0) {
+			$origen="../public/img/system/userdefault.png";
+			$destino="../public/img/foto_user/";
+			copy($origen,$destino.$carnet.".png");//revisar despues el fallo
+			$img= $carnet.".png";
+		}
 
 		if ($tipousuario =='1')
 		{
 			$carrera = $_POST['carrera'];
-			$sql= "INSERT INTO usuario VALUES (NULL,'$carnet','$nombre','$apellido','$telefono','$direccion','$correo','$contrasena',NULL,NULL,'$tipousuario','$carrera')";
+			$sql= "INSERT INTO usuario VALUES (NULL,'$carnet','$nombre','$apellido','$telefono','$direccion','$correo','$contrasena','$img',NULL,'$tipousuario','$carrera')";
 			
 			
 		} else {
-			$sql= "INSERT INTO usuario VALUES (NULL,'$carnet','$nombre','$apellido','$telefono','$direccion','$correo','$contrasena',NULL,NULL,'$tipousuario',NULL)";
+			$sql= "INSERT INTO usuario VALUES (NULL,'$carnet','$nombre','$apellido','$telefono','$direccion','$correo','$contrasena','$img',NULL,'$tipousuario',NULL)";
 			
 			
 		}
 		
-    $result= $create->execute($sql);
-    if ($result) {
-    	session_start();
+    	$result= $create->execute($sql);
+    	if ($result) {
+    		session_start();
             if ($_SESSION["tipo"]== 3) {
                 if ($tipousuario=="1") {//(cambiar despues a 3)la logica no falla pero no existe $_get['editar']
-                    header("location:../view/admin/egresado.php?add=true");
+                    header("location:../view/admin/egresado.php?usuario=user");
                 }else{
-                    header("location:../view/admin/moderador.php?add=true");
+                    header("location:../view/admin/moderador.php?usuario=mod");
                 }
             }elseif ($_SESSION["tipo"]== 2) {
                 //header("location:../view/admin/egresados.php");//aun falta esta vista
             }
-    }else{echo "algo anda mal";}
+    	}else{
+    		if ($tipousuario="1") {
+    			header("location:../view/admin/egresado.php?usuario=user");
+    			
+    		}else{
+                    header("location:../view/admin/moderador.php?usuario=mod");
+    			
+    		}
+    	}
 
 	}elseif(isset($_POST['cancel'])){
 		session_start();

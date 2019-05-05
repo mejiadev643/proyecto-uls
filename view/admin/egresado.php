@@ -63,16 +63,7 @@
       			<li class="nav-item active">
         			<a class="nav-link" href="Panel_admin.php">Inicio <span class="sr-only">(current)</span></a>
       			</li>
-				<li class="nav-item dropdown">
-        			<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    	      			Perfil
-        			</a>
-        			<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        				<a class="dropdown-item" href="#">Ver perfil</a>
-        		  		<a class="dropdown-item" href="#">Editar perfil</a>
-        		  		
-        			</div><!--Eliminar esta parte de l avista de moderador e incluirlo en la vista de cliente y egresado-->
-      			</li>
+
 
       			<li class="nav-item">
         			<a class="nav-link" href="empleo.php">Ofertas de Empleo</a>
@@ -93,27 +84,24 @@
         			<a class="nav-link" href="../../model/cerrar_sesion.php">Cerrar sesión</a>
       			</li>	
     		</ul>
-    		<form class="form-inline my-2 my-lg-0">
-      			<input class="form-control mr-sm-2" type="search" placeholder="Buscar egresado" aria-label="Search">
-      			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
-    		</form>
+
   		</div>
 		</nav>
     <!--Agregar la barra de empleo y un boton de buscar, y no de editar-->
     <div class="container">
     <?php 
       if (isset($_GET['edit']))
-      {?>
-        <h2 style="text-align: center;">
+      {
+        echo "<h2 style='text-align: center;'>
         Editar Usuario
         </h2>
       </div>
-      <hr>
+      <hr>";
 
-      <?php
-    }elseif (isset($_GET['usuario'])) {
-    }
-      else
+      
+      }elseif (isset($_GET['usuario'])) {
+        
+      }else
       {?>
             
       <h2 style="text-align: center;">
@@ -131,7 +119,7 @@
 			<div class="col-xs-12 col-md-12">
         <?php
           $read= new Login();//uso de read
-          if (isset($_GET['edit']))
+          if (isset($_GET['edit']))//si la variable edit esta llena
           {
             include_once("../../controller/update.php");//llamamos al crud para hacer el recorrido
             require("../update.php");//editar esta localizacion
@@ -163,12 +151,12 @@
                     <th scope="col">nombres</th>
                     <th scope="col">apellidos</th>
                     <th scope="col">telefono</th>
-                    <th scope="col" style="width: 40%">direccion</th>
-                    <th scope="col">correo electronico</th>
+                    <th scope="col" style="width: 10%">direccion</th>
+                    <th scope="col" >correo electronico</th>
                     <th scope="col">contraseña</th>
-                    <th scope="col" style="width: 70%">Imagen</th>
+                    <th scope="col" style="width: 10%">Imagen</th>
                   
-                    <th scope="col" style="width: 100%;">Acciones</th>
+                    <th scope="col" style="width: 5%;">Acciones</th>
                   </tr>
               </thead>
               <tbody>
@@ -207,6 +195,7 @@
                     </td>
                   </tr>
                 </tbody>
+
                 <?php
                 }//end for
                     
@@ -215,9 +204,11 @@
             {
               echo "No existen registros";
             }
+
           }//end else
           
           ?>
+          </table>
 
 
       </div><!--end col-->

@@ -81,6 +81,9 @@
     						<label for="formGroupExampleInput">contraseña</label>
     						<input type="text" class="form-control" id="contrasena" name="contrasena" placeholder="contraseña" >
   					    </div>
+                <div>
+                  <input hidden type="file" name="imagen">
+                </div>
   					    
     					<div class="form-group"><!-- hago una entrada de nueva imagen-->
                   			<input hidden  name="tipousuario"  type="int" value="<?php if($_GET['usuario']=='user'){echo '1';}else{echo '2';} ?>" />

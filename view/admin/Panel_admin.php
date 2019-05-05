@@ -29,7 +29,6 @@
 		<title>Inicio</title>
     	<!-- Bootstrap CSS -->
 		<link href="../../public/css/bootstrap.min.css" rel="stylesheet">
-		<link rel="stylesheet" type="text/css" href="none.css">
   		</head>
 
   	<body>
@@ -46,16 +45,7 @@
       			<li class="nav-item active">
         			<a class="nav-link" href="Panel_admin.php">Inicio <span class="sr-only">(current)</span></a>
       			</li>
-				<li class="nav-item dropdown">
-        			<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    	      			Perfil
-        			</a>
-        			<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        				<a class="dropdown-item" href="#">Ver perfil</a>
-        		  		<a class="dropdown-item" href="#">Editar perfil</a>
-        		  		<a class="dropdown-item" href="#">Something else here</a>
-        			</div><!--Eliminar esta parte de l avista de moderador e incluirlo en la vista de cliente y egresado-->
-      			</li>
+
 
       			<li class="nav-item">
         			<a class="nav-link" href="empleo.php">Ofertas de Empleo</a>
@@ -76,10 +66,7 @@
         			<a class="nav-link" href="../../model/cerrar_sesion.php">Cerrar sesión</a>
       			</li>	
     		</ul>
-    		<form class="form-inline my-2 my-lg-0">
-      			<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    		</form>
+
   		</div>
 		</nav>
 		<div class="container">
@@ -100,7 +87,7 @@
 
 				</div> end card-deck-->
 			<!--</div> end col -->
-				<div class="col-xs-12 col-sm-6 col-md-3 col-xs-2">
+				<div class="col-xs-12 col-sm-6 col-md-3 ">
 					<div class="card-deck" style="margin-top: 60px;">
   						<div class="card">
     						<img src="../../public/img/system/examen.svg" class="card-img-top" alt="examen" >
@@ -108,8 +95,13 @@
     							<h5 class="card-title">Ofertas de Empleo</h5>
       			   				<p class="card-text">Agregar ofertas de empleo, o Eliminar </p>
       							<center>
-      								<button type="button" class="btn btn-dark">Ver</button>
+                      <a href="empleo.php">
+                        <button type="button" class="btn btn-dark">Ver</button>
+                      </a>
+      								
+                      <a href="empleo.php?nuevo=empleo">
       								<button type="button" class="btn btn-dark">Agregar</button>
+                    </a>
       						   </center>
 
     						</div>
@@ -119,7 +111,7 @@
 					</div><!-- end card-deck-->
 			</div><!-- end col-->
 
-			<div class="col-xs-12 col-sm-6 col-md-3 col-xs-2">
+			<div class="col-xs-12 col-sm-6 col-md-3 ">
 				<div class="card-deck" style="margin-top: 60px;">
   					<div class="card">
     					<img src="../../public/img/system/universidad.svg" class="card-img-top" alt="universidad" >
@@ -127,8 +119,12 @@
     						<h5 class="card-title">Ofertas Academicas</h5>
       			   			<p class="card-text">Agregar ofertas academicas, o Eliminar</p>
       						<center>
-      							<button type="button" class="btn btn-dark">Ver</button>
-                    <button type="button" class="btn btn-dark">Agregar</button>
+                    <a href="academica.php">
+      							 <button type="button" class="btn btn-dark">Ver</button>
+                    </a>
+                    <a href="academica.php?nuevo=academica">
+                      <button type="button" class="btn btn-dark">Agregar</button>
+                    </a>
       						</center>
     					</div>
     				
@@ -137,7 +133,7 @@
 				</div><!-- end card-deck-->
 			</div><!-- end col-->
 
-			<div class="col-xs-12 col-sm-6 col-md-3 col-xs-2">
+			<div class="col-xs-12 col-sm-6 col-md-3 ">
 				<div class="card-deck" style="margin-top: 60px;">
   					<div class="card">
     					<img src="../../public/img/system/birrete.svg" class="card-img-top" alt="birrete" >
@@ -161,7 +157,7 @@
 				</div><!-- end card-deck-->
 			</div><!-- end col-->
 
-			<div class="col-xs-12 col-sm-6 col-md-3 col-xs-2">
+			<div class="col-xs-12 col-sm-6 col-md-3 ">
 				<div class="card-deck" style="margin-top: 60px;">
   					<div class="card">
     					<img src="../../public/img/system/equipo.svg" class="card-img-top" alt="moderadores" >
