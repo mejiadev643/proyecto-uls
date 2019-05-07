@@ -100,7 +100,7 @@
       <div class="row" style="justify-content: center;">
 
 
-        <div class="col-sm-12 col-sm-12 col-md-6" style="top: 25px;" >
+        <div class="col-sm-12 col-sm-12 col-md-6"style=" border: 2px solid black; margin-top: 1%;" >
 
           <img src="../../public/img/foto_user/<?php echo $consulta[0]['foto']; ?>" alt="..." class="img-thumbnail" style="float: right; width: 200px; height: 200px;">
 
@@ -128,6 +128,7 @@
 
         </div><!--enr row-->
       </div>
+    </div>
 
           <?php
           }//end isset consulta
