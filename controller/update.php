@@ -5,12 +5,13 @@ if (isset($_POST["cancel"])) {
     session_start();
     if ($_SESSION["tipo"]== 3) {
         if ($_POST['tipousuario']=="1") {//cambiar despues el numero
-                    header("location:../view/admin/egresado.php");
-                }else{
-                    header("location:../view/admin/moderador.php");
-                }
-    }elseif ($_SESSION["tipo"]== 2) {
-        //header("location:../view/admin/egresados.php");//aun falta esta vista
+            header("location:../view/admin/egresado.php");
+        }else{
+            header("location:../view/admin/moderador.php");
+        }
+
+    }elseif ($_SESSION["tipo"]==1) {
+        header("location:../view/user/perfil.php");
     }
 }elseif (isset($_GET["edit"])) 
 {
