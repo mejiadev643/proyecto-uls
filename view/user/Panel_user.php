@@ -51,7 +51,7 @@
         			</a>
         			<div class="dropdown-menu" aria-labelledby="navbarDropdown">
         				<a class="dropdown-item" href="perfil.php">Ver perfil</a>
-        		  		<a class="dropdown-item" href="perfil.php?edit=actualizar&id=<?php echo $_SESSION['id']; ?>">Editar perfil</a>
+        		  		<a class="dropdown-item" href="perfil.php?edit=actualizar&editar=<?php echo $_SESSION['id']; ?>">Editar perfil</a>
         		  		
         			</div><!--Eliminar esta parte de l avista de moderador e incluirlo en la vista de cliente y egresado-->
       			</li>
@@ -85,7 +85,7 @@
                       				<a href="perfil.php">
                         			<button type="button" class="btn btn-dark">Ver perfil</button>
                       				</a>
-                      				<a href="perfil.php?edit=actualizar&id=<?php echo $_SESSION['id']; ?>">
+                      				<a href="perfil.php?edit=actualizar&editar=<?php echo $_SESSION['id']; ?>">
                         			<button type="button" class="btn btn-dark">Actualizar</button>
                       				</a>
       								

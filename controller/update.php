@@ -39,7 +39,7 @@ if (isset($_POST["cancel"])) {
         }
 }elseif (isset($_POST["actualizar"])) {
     
-    {
+    
     $carnet = $_POST['carnet'];
     $nombre = $_POST['nombre'];
     $apellido = $_POST['apellido'];
@@ -63,7 +63,7 @@ if (isset($_POST["cancel"])) {
 
         $result = $update->execute($sql);
 
-        if ($result) 
+        /*if ($result) 
         {
             session_start();
             if ($_SESSION["tipo"]== 3) {
@@ -76,7 +76,7 @@ if (isset($_POST["cancel"])) {
                 //header("location:../view/admin/egresados.php");//aun falta esta vista
                 header("location:../view/user/perfil.php");
             }
-        }//end if
+        }//end if*/
 
     }
     else
@@ -101,7 +101,11 @@ if (isset($_POST["cancel"])) {
 
             $result = $update->execute($sql);
 
-            if ($result) 
+            
+
+        }
+    }
+    if ($result) 
             {
                 
                 
@@ -112,8 +116,8 @@ if (isset($_POST["cancel"])) {
                     }else{
                         header("location:../view/admin/moderador.php?update=true");
                     }
-                }elseif ($_SESSION["tipo"]== 2) {
-                        //header("location:../view/admin/egresados.php");//aun falta esta vista
+                }elseif ($_SESSION["tipo"]== 1) {
+                    header("location:../view/user/Panel_user.php");//aun falta esta vista
                 }
             }//end if
             else
@@ -122,10 +126,8 @@ if (isset($_POST["cancel"])) {
                 //header("location:../index.php?mensaje=Error al actualizar los datos");
             }
 
-        }
-    }
 
-    }//END IF
+    //END IF
     //completado
 }
 
