@@ -1,0 +1,74 @@
+.body{
+	background:#2D8DE1;
+}
+.fondo{
+	background: #025477 url(../img/fondos/textura0.png) no-repeat center fixed;background-size:100% 100%
+}
+
+.color1{background: #025477 url(../img/fondos/textura4a.png) no-repeat center fixed;background-size:100% 100%}
+.slider1{
+	/* background: url("../img/Chivacola.jpg"); */
+	/* Ocupara toda la altura disponible */
+	width: 100%;
+	height: 95vh;
+	/* La imagen de adapte al tamaño del despoditivo */
+	background-size: cover;
+	/* La imagen estara centrada */
+	background-position: center;
+	text-align: center;
+	color: white;
+
+}
+
+.color2{background: #025477 url(../img/fondos/textura5.png) no-repeat center fixed;background-size:100% 100%}
+
+
+.slider2{
+	/* background: url("../img/Chivacola.jpg"); */
+	/* Ocupara toda la altura disponible */
+	width: 100%;
+	height: 95vh;
+	/* La imagen de adapte al tamaño del despoditivo */
+	background-size: cover;
+	/* La imagen estara centrada */
+	background-position: center;
+}
+
+.imagen:hover{
+	filter: saturate(180%);
+	border-radius:50%;
+	-webkit-border-radius:50%;
+	box-shadow: 0px 0px 15px 15px #ec731e;
+	-webkit-box-shadow: 0px 0px 15px 15px #ec731e;
+	transform: rotate(360deg);
+	-webkit-transform: rotate(360deg);
+}
+
+.imagen2:hover {
+	-webkit-transform: rotateY(180deg);
+	-webkit-transform-style: preserve-3d;
+	transform: rotateY(180deg);
+	transform-style: preserve-3d;
+}
+
+button a{
+	color: black;
+	text-decoration: none;
+	padding: 10px
+}
+
+button a:hover{
+	color: white;
+}
+
+button a:link{ 
+	text-decoration:none; 
+}
+
+a:link{ 
+	text-decoration:none; 
+}
+
+.center{
+	text-align: center;
+}
