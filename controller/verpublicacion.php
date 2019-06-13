@@ -3,7 +3,8 @@
 	$publicacion= new Login();
 	$id=$_GET['ver'];
 	//$sql = "SELECT * FROM publicacion WHERE id_publicacion='$id'";
-	$sql="SELECT titulo, imagen, descripcion, (SELECT nombre FROM carrera WHERE id_carrera='$id') AS carrera, tipo_publicacion FROM `publicacion` WHERE id_publicacion='$id'";
+	$sql="SELECT pb.tipo_publicacion, pb.titulo, pb.descripcion, pb.imagen, car.nombre as carrera
+FROM publicacion as pb INNER JOIN carrera as car on pb.carrera_public= car.id_carrera WHERE pb.id_publicacion='$id'";
 	$result=$publicacion->execute($sql);
 	if ($result) {
 		$datos= $publicacion->getData2($sql);
