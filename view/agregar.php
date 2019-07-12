@@ -45,8 +45,9 @@
     		?>
     		<hr>
 			<div class="row">
-				<div class="col-xs-12 col-md-4 col-xl-3"></div>
+				<div class="col-xs-12 col-md-2 col-xl-3"></div>
 				<div class="col-xs-12 col-md-8 col-xl-6	">
+          <center><p style="color: red; font-size: 18px;"><?php if(isset($_GET['error'])){echo "Usuario registrado previamente :(";}  ?></p></center>
 					<form class="bg-dark" style="color: white; padding: 6px;" action="../../controller/create.php" enctype="multipart/form-data" method="post">
   						<div class="form-group ">
     						<label for="formGroupExampleInput">Carnet</label>
@@ -127,7 +128,7 @@
         			
 
 				</div>
-				<div class="col-xs-12 col-md-4 col-xl-3"></div>
+				<div class="col-xs-12 col-md-2 col-xl-3"></div>
 			</div>
 			
 		

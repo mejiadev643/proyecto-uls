@@ -51,7 +51,7 @@
   					    </div>
   					    <div class="form-group ">
     						<label for="formGroupExampleInput">correo electronico</label>
-    						<input type="text" class="form-control" id="correo" name="correo"placeholder="<?php echo $correo;?>" value="<?php echo $correo;?>">
+    						<input type="email" class="form-control" id="correo" name="correo"placeholder="<?php echo $correo;?>" value="<?php echo $correo;?>">
   					    </div>
   					    
   					    <div class="form-group ">

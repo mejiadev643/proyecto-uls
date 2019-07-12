@@ -46,7 +46,7 @@
       
     	<!-- Bootstrap CSS -->
 		<link href="../../public/css/bootstrap.min.css" rel="stylesheet">
-		<link rel="stylesheet" type="text/css" href="none.css">
+
   		</head>
 
   	<body>
