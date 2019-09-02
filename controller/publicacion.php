@@ -32,7 +32,7 @@ if (isset($_POST['publicar'])) {
 		}
 
 	}else{
-		$dir="../public/img/publicaciones/";
+		$dir="../public/img/publicaciones/"; //dar todos los permisos a esta carpeta
 		$ruta= $dir.basename($_FILES['imagen']['name']);
 		$nombreimagen= $_FILES['imagen']['name'];//asi se guardara el nombre la imagen
 		$imagenValida = false;

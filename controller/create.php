@@ -33,18 +33,20 @@
 			if ($imagen['size']<=0) {
 				$origen="../public/img/system/userdefault.png";
 				$destino="../public/img/foto_user/";
-				copy($origen,$destino.$carnet.".png");//revisar despues el fallo
+				$copiar=copy($origen,$destino.$carnet.".png");//dar permisos a la carpeta ../public/img/foto_user/
+
 				$img= $carnet.".png";
 			}
+			
 
 			if ($tipousuario =='1')
 			{
 				$carrera = $_POST['carrera'];
-				$sql= "INSERT INTO usuario VALUES (NULL,'$carnet','$nombre','$apellido','$telefono','$direccion','$correo','$contrasena','$img',NULL,'$tipousuario','$carrera')";
+				$sql= "INSERT INTO usuario VALUES (NULL,'$carnet','$nombre','$apellido','$telefono','$direccion','$correo',AES_ENCRYPT('$contrasena','Uluterana'),'$img',NULL,'$tipousuario','$carrera')";
 			
 			
 			} else {
-				$sql= "INSERT INTO usuario VALUES (NULL,'$carnet','$nombre','$apellido','$telefono','$direccion','$correo','$contrasena','$img',NULL,'$tipousuario',NULL)";
+				$sql= "INSERT INTO usuario VALUES (NULL,'$carnet','$nombre','$apellido','$telefono','$direccion','$correo',AES_ENCRYPT('$contrasena','Uluterana'),'$img',NULL,'$tipousuario',NULL)";
 			
 			
 			}
@@ -59,8 +61,8 @@
         	        header("location:../view/admin/moderador.php?usuario=mod");
         	    }
 
-    		}/*
-		*/
+    		}
+		/**/
 			
 		}
 		

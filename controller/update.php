@@ -59,7 +59,7 @@ if (isset($_POST["cancel"])) {
     if ($imagen2['size'] <= 0)
     {
         $nombre_img = $imagen1;
-        $sql = "UPDATE usuario SET carnet = '$carnet', nombre = '$nombre', apellido = '$apellido', telefono = '$telefono', direccion = '$direccion', correo_electronico = '$correo', contrasena = '$contrasena', foto = '$nombre_img' WHERE id = '$id'";
+        $sql = "UPDATE usuario SET carnet = '$carnet', nombre = '$nombre', apellido = '$apellido', telefono = '$telefono', direccion = '$direccion', correo_electronico = '$correo', contrasena =  AES_ENCRYPT('$contrasena','Uluterana'), foto = '$nombre_img' WHERE id = '$id'";
 
         $result = $update->execute($sql);
 
@@ -97,7 +97,7 @@ if (isset($_POST["cancel"])) {
         }
         if ($imagenValida)
         {
-            $sql = "UPDATE usuario SET carnet = '$carnet', nombre = '$nombre', apellido = '$apellido', telefono = '$telefono', direccion = '$direccion', correo_electronico = '$correo', contrasena = '$contrasena', foto = '$imagenNombre' WHERE id = '$id'";
+            $sql = "UPDATE usuario SET carnet = '$carnet', nombre = '$nombre', apellido = '$apellido', telefono = '$telefono', direccion = '$direccion', correo_electronico = '$correo', contrasena = AES_ENCRYPT('$contrasena','Uluterana'), foto = '$imagenNombre' WHERE id = '$id'";
 
             $result = $update->execute($sql);
 

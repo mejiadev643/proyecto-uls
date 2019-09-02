@@ -57,7 +57,7 @@ CREATE TABLE usuario (
   telefono int(9) DEFAULT NULL,
   direccion varchar(150) DEFAULT NULL,
   correo_electronico varchar(60) DEFAULT NULL,
-  contrasena varchar(20) NOT NULL,
+  contrasena BLOB NOT NULL,
   foto varchar(250) DEFAULT NULL,
   token varchar(11) DEFAULT NULL,
   id_tipo_usuario int(3) NOT NULL,
@@ -102,3 +102,16 @@ INSERT INTO tipo_usuario (id_usuario, tipo) VALUES
 (1, 'egresado'),
 (2, 'operador'),
 (3, 'administrador');
+
+-- funcion para insertar un administrador
+
+DELIMITER //
+CREATE FUNCTION insertar(nom varchar(11),con blob, tip int(3))
+RETURNS varchar(30)
+BEGIN
+DECLARE var varchar(30);
+INSERT into usuario (carnet,contrasena, id_tipo_usuario) VALUES(nom,AES_ENCRYPT(con,"Uluterana"), tip);
+SET var= 'ejecutado correctamente';
+RETURN var;
+END
+//
